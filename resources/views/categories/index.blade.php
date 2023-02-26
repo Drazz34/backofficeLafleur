@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Mes articles') }}
+            Liste de toutes les catégories
         </h2>
     </x-slot>
 
@@ -10,36 +10,32 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
 
-                    @if (count($articles) > 0 )
+                    @if (count($categories) > 0)
 
                     <table class="table-auto border">
 
                         <thead>
-
                             <tr class="border">
-
                                 <th class="p-5">ID</th>
                                 <th class="p-5">NOM</th>
-                                <th class="p-5 mx-3 flex justify-between items-center">ACTIONS<x-btn-creer><a href="{{route('articles.create')}}">CREER</a></x-btn-creer></th>
+                                <th class="p-5 mx-3 flex justify-between items-center">ACTIONS<x-btn-creer><a href="{{route('categories.create')}}">CREER</a></x-btn-creer></th>
 
                             </tr>
-
                         </thead>
 
                         <tbody>
 
-                            @foreach ($articles as $article)
+                            @foreach ($categories as $categorie)
 
                             <tr class="border text-center">
-
-                                <td>{{$article->id}}</td>
-                                <td>{{$article->nom}}</td>
+                                <td class="p-5">{{$categorie->id}}</td>
+                                <td class="p-5">{{$categorie->nom}}</td>
                                 <td class="p-5">
 
                                     <!-- lien Modifier -->
                                     @component('components.btn-modele')
                                     @slot('route')
-                                    {{route('articles.edit', $article->id)}}
+                                    {{route('categories.edit', $categorie->id)}}
                                     @endslot
                                     @slot('class')
                                     text-white bg-blue-600 hover:bg-blue-800 focus:bg-blue-800;
@@ -49,10 +45,11 @@
                                     @endslot
                                     @endcomponent
 
+
                                     <!-- lien Voir -->
                                     @component('components.btn-modele')
                                     @slot('route')
-                                    {{route('articles.show', $article->id)}}
+                                    {{route('categories.show', $categorie->id)}}
                                     @endslot
                                     @slot('class')
                                     text-black bg-gray-200 hover:bg-gray-400 focus:bg-gray-400;
@@ -62,8 +59,9 @@
                                     @endslot
                                     @endcomponent
 
-                                    <x-btn-supprimer :action="route('articles.destroy', $article->id)" />
 
+                                    <!-- lien Supprimer -->
+                                    <x-btn-supprimer :action="route('categories.destroy', $categorie->id)"/>
 
                                 </td>
 
@@ -77,7 +75,7 @@
 
                     @else
 
-                    Il n'y a pas d'articles.
+                    Il n'y a pas de catégorie.
 
                     @endif
                 </div>

@@ -2,19 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Article;
+use App\Models\Unite;
 use Illuminate\Http\Request;
 
-class ArticleController extends Controller
+class UniteController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $articles = Article::orderBy('id')->get();
+        $unites = Unite::orderBy('id')->get();
 
-        return view('articles.index', ['articles' => $articles]);
+        return view('unites.index', ['unites' => $unites]);
     }
 
     /**
@@ -38,10 +38,9 @@ class ArticleController extends Controller
      */
     public function show(string $id)
     {
-        $article = Article::find($id);
-        $article->with('categories')->get();
+        $unite = Unite::find($id);
 
-        return view('articles.show', compact('article'));
+        return view('unites.show', compact('unite'));
     }
 
     /**

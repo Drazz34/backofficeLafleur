@@ -13,7 +13,7 @@
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
+                        {{ __('Tableau de bord') }}
                     </x-nav-link>
                 </div>
                 
@@ -21,6 +21,34 @@
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('articles.index')" :active="request()->routeIs('articles.index')">
                         {{ __('Articles') }}
+                    </x-nav-link>
+                </div>
+
+                <!-- Navigation espèces végétales -->
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('especesVegetales.index')" :active="request()->routeIs('especesVegetales.index')">
+                        {{ __('Espèces végétales') }}
+                    </x-nav-link>
+                </div>
+
+                <!-- Navigation couleurs -->
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('couleurs.index')" :active="request()->routeIs('couleurs.index')">
+                        {{ __('Couleurs') }}
+                    </x-nav-link>
+                </div>
+
+                <!-- Navigation unités -->
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('unites.index')" :active="request()->routeIs('unites.index')">
+                        {{ __('Unités') }}
+                    </x-nav-link>
+                </div>
+
+                <!-- Navigation catégories -->
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('categories.index')" :active="request()->routeIs('categories.index')">
+                        {{ __('Catégories') }}
                     </x-nav-link>
                 </div>
 

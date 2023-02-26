@@ -2,19 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Article;
+use App\Models\Couleur;
 use Illuminate\Http\Request;
 
-class ArticleController extends Controller
+class CouleurController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $articles = Article::orderBy('id')->get();
+        $couleurs = Couleur::orderBy('id')->get();
 
-        return view('articles.index', ['articles' => $articles]);
+        return view('couleurs.index', ['couleurs' => $couleurs]);
     }
 
     /**
@@ -38,10 +38,9 @@ class ArticleController extends Controller
      */
     public function show(string $id)
     {
-        $article = Article::find($id);
-        $article->with('categories')->get();
+        $couleur = Couleur::find($id);
 
-        return view('articles.show', compact('article'));
+        return view('couleurs.show', compact('couleur'));
     }
 
     /**

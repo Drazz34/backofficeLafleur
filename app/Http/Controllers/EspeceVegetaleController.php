@@ -2,19 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Article;
+use App\Models\EspeceVegetale;
 use Illuminate\Http\Request;
 
-class ArticleController extends Controller
+class EspeceVegetaleController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $articles = Article::orderBy('id')->get();
+        $especesVegetales = EspeceVegetale::orderBy('id')->get();
 
-        return view('articles.index', ['articles' => $articles]);
+        return view('especesVegetales.index', ['especesVegetales' => $especesVegetales]);
     }
 
     /**
@@ -38,10 +38,9 @@ class ArticleController extends Controller
      */
     public function show(string $id)
     {
-        $article = Article::find($id);
-        $article->with('categories')->get();
+        $especeVegetale = EspeceVegetale::find($id);
 
-        return view('articles.show', compact('article'));
+        return view('especesVegetales.show', compact('especeVegetale'));
     }
 
     /**
