@@ -22,10 +22,28 @@
                             </ul>
                         </h3>
 
+                        <h3>
+                            <div class="flex">
+                                <p class="m-2 text-xl bg-red-200 max-w-none p-2 rounded-lg">{{$article->prix_unitaire}}€</p>
+                            </div>   
+                        </h3>
+
+                        <h3>
+                            <div class="flex">
+                                <p class="m-2 text-xl bg-blue-200 max-w-none p-2 rounded-lg">Quantité : {{$article->quantite_dispo}}</p>
+                            </div>   
+                        </h3>
+
+                        <h3>
+                            <div class="flex">
+                                <p class="m-2 text-xl bg-pink-200 max-w-none p-2 rounded-lg">{{$article->especeVegetale->nom}}</p>
+                            </div>   
+                        </h3>
+
                     </div>
                     
                     <div class="flex justify-end">
-                        <a href="{{route('articles.edit', $article->id)}}" class="btn-edit">Modifier</a>
+                        <a href="{{route('articles.edit', $article->id)}}" class="btn-edit">Quantité</a>
                         <x-btn-supprimer :action="route('articles.destroy', $article->id)" />
                     </div>
 

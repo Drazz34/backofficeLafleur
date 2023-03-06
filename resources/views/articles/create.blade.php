@@ -23,21 +23,68 @@
 
                         <div class="form-group">
                             <label for="prix_unitaire" class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">Prix unitaire</label>
-                            <input type="number" name="prix_unitaire" id="prix_unitaire" step="0.01" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" required></textarea>
+                            <input type="number" name="prix_unitaire" id="prix_unitaire" step="0.01" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" required>
                             @error('prix_unitaire')
                             <div class="text-red-500">{{$message}}</div>
                             @enderror
                         </div>
 
                         <div class="form-group">
+                            <label for="categorie" class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">Catégorie</label>
+                            <select name="categorie" id="categorie" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+                                <option value="">Sélection</option>
+                                @foreach($categories as $categorie)
+                                <option value="{{$categorie->id}}">{{$categorie->nom}}</option>
+                                @endforeach
+                            </select>
+                            @error('categorie')
+                            <div class="text-red-500">{{$message}}</div>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
                             <label for="espece_vegetale" class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">Espèce végétale</label>
-                            <select name="espece_vegetale" id="espece_vegetale">
+                            <select name="espece_vegetale" id="espece_vegetale" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
                                 <option value="">Sélection</option>
                                 @foreach($especesVegetales as $especeVegetale)
                                 <option value="{{$especeVegetale->id}}">{{$especeVegetale->nom}}</option>
                                 @endforeach
                             </select>
                             @error('espece_vegetale')
+                            <div class="text-red-500">{{$message}}</div>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
+                            <label for="couleur" class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">Couleur</label>
+                            <select name="couleur" id="couleur" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+                                <option value="">Sélection</option>
+                                @foreach($couleurs as $couleur)
+                                <option value="{{$couleur->id}}">{{$couleur->nom_couleur}}</option>
+                                @endforeach
+                            </select>
+                            @error('couleur')
+                            <div class="text-red-500">{{$message}}</div>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
+                            <label for="quantite_dispo" class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">Quantité</label>
+                            <input type="number" name="quantite_dispo" id="quantite_dispo" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" required>
+                            @error('quantite_dispo')
+                            <div class="text-red-500">{{$message}}</div>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
+                            <label for="unite" class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">Unité</label>
+                            <select name="unite" id="unite" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+                                <option value="">Sélection</option>
+                                @foreach($unites as $unite)
+                                <option value="{{$unite->id}}">{{$unite->nom}}</option>
+                                @endforeach
+                            </select>
+                            @error('unite')
                             <div class="text-red-500">{{$message}}</div>
                             @enderror
                         </div>

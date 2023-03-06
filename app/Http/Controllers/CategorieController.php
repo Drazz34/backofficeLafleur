@@ -64,7 +64,9 @@ class CategorieController extends Controller
      */
     public function destroy(string $id)
     {
-        Categorie::destroy($id);
+        $categorie = Categorie::findOrFail($id);
+        $categorie->articles()->detach(); // Supprime les articles associées à la categorie
+        $categorie->delete(); // Supprime la categorie
         return redirect()->route('categories.index');
     }
 }

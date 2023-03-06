@@ -45,7 +45,7 @@
                                     text-white bg-blue-600 hover:bg-blue-800 focus:bg-blue-800;
                                     @endslot
                                     @slot('title')
-                                    Modifier
+                                    Quantité
                                     @endslot
                                     @endcomponent
 
