@@ -24,6 +24,13 @@
                     </x-nav-link>
                 </div>
 
+                <!-- Navigation catégories -->
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('categories.index')" :active="request()->routeIs('categories.index')">
+                        {{ __('Catégories') }}
+                    </x-nav-link>
+                </div>
+
                 <!-- Navigation espèces végétales -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('especesVegetales.index')" :active="request()->routeIs('especesVegetales.index')">
@@ -42,13 +49,6 @@
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('unites.index')" :active="request()->routeIs('unites.index')">
                         {{ __('Unités') }}
-                    </x-nav-link>
-                </div>
-
-                <!-- Navigation catégories -->
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('categories.index')" :active="request()->routeIs('categories.index')">
-                        {{ __('Catégories') }}
                     </x-nav-link>
                 </div>
 
