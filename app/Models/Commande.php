@@ -16,7 +16,7 @@ class Commande extends Model
 
     public function article()
     {
-        return $this->belongsTo(Article::class, "articles_id");
+        return $this->belongsTo(Article::class, "article_id");
     }
 
     public function fraisLivraison()
@@ -26,12 +26,12 @@ class Commande extends Model
 
     public function client()
     {
-        return $this->belongsTo(Client::class, "clients_id");
+        return $this->belongsTo(Client::class, "client_id");
     }
 
     public function gainLoterie()
     {
-        return $this->belongsTo(GainLoterie::class, "gains_loterie_id");
+        return $this->belongsTo(GainLoterie::class, "gain_loterie_id");
     }
 
     public function adresse()

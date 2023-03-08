@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Article;
 use App\Models\EspeceVegetale;
 use Illuminate\Http\Request;
 
@@ -65,6 +64,9 @@ class EspeceVegetaleController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $especeVegetale = EspeceVegetale::findOrFail($id);
+        $especeVegetale->articles()->detach(); // Supprime les articles associées à la $especeVegetale
+        $especeVegetale->delete(); // Supprime la $especeVegetale
+        return redirect()->route('especesVegetales.index');
     }
 }
