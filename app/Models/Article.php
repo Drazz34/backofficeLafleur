@@ -16,17 +16,17 @@ class Article extends Model
 
     public function couleur()
     {
-        return $this->belongsTo(Couleur::class, "couleurs_id");
+        return $this->belongsTo(Couleur::class, "couleur_id");
     }
 
     public function unite()
     {
-        return $this->belongsTo(Unite::class, "unites_id");
+        return $this->belongsTo(Unite::class, "unite_id");
     }
 
     public function especeVegetale()
     {
-        return $this->belongsTo(EspeceVegetale::class, "especes_vegetales_id");
+        return $this->belongsTo(EspeceVegetale::class, "espece_vegetale_id");
     }
 
     public function categories()

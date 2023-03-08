@@ -36,7 +36,7 @@
 
 
                         <div class="flex flex-col max-w-lg">
-                            <label for="quantite" class="py-3 font-bold">Quantité à ajouter</label>
+                            <label for="quantite" class="py-3 font-bold">Quantité à ajouter ou retrancher</label>
                             <input type="number" name="quantite" id="quantite">
                             @error('quantite')
                             <div class="text-red-500">{{$message}}</div>

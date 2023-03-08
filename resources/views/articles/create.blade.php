@@ -15,7 +15,7 @@
 
                         <div class="form-group">
                             <label for="nom" class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">Nom</label>
-                            <input type="text" name="nom" id="nom" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" required >
+                            <input type="text" name="nom" id="nom" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" required>
                             @error('nom')
                             <div class="text-red-500">{{$message}}</div>
                             @enderror
@@ -30,17 +30,20 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="categorie" class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">Catégorie</label>
-                            <select name="categorie" id="categorie" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
-                                <option value="">Sélection</option>
-                                @foreach($categories as $categorie)
-                                <option value="{{$categorie->id}}">{{$categorie->nom}}</option>
-                                @endforeach
-                            </select>
-                            @error('categorie')
-                            <div class="text-red-500">{{$message}}</div>
+                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="categorie">Catégorie</label>
+                            @foreach($categories as $categorie)
+                            <div class="flex items-center mb-3">
+                                <input type="checkbox" name="categories[]" value="{{ $categorie->id }}" id="categorie_{{ $categorie->id }}" class="form-checkbox h-4 w-4 text-indigo-600 transition duration-150 ease-in-out">
+                                <label for="categorie_{{ $categorie->id }}" class="ml-2 block text-gray-900">
+                                    {{ $categorie->nom }}
+                                </label>
+                            </div>
+                            @endforeach
+                            @error('categories')
+                            <div class="text-red-500">{{ $message }}</div>
                             @enderror
                         </div>
+
 
                         <div class="form-group">
                             <label for="espece_vegetale" class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">Espèce végétale</label>

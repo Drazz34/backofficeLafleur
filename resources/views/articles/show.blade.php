@@ -40,6 +40,18 @@
                             </div>   
                         </h3>
 
+                        <h3>
+                            <div class="flex">
+                                <p class="m-2 text-xl bg-green-200 max-w-none p-2 rounded-lg">Couleur : {{$article->couleur->nom_couleur}}</p>
+                            </div>   
+                        </h3>
+
+                        <h3>
+                            <div class="flex">
+                                <p class="m-2 text-xl bg-yellow-200 max-w-none p-2 rounded-lg">{{$article->unite->nom}}</p>
+                            </div>   
+                        </h3>
+
                     </div>
                     
                     <div class="flex justify-end">

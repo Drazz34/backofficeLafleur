@@ -37,41 +37,42 @@ class ArticleController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
-    {
-        if ($request->validate([
-            'nom' => 'required|string|max:45|min:2',
-            'prix_unitaire' => 'required|min:1',
-            'espece_vegetale' => 'required',
-            'couleur' => 'required',
-            'quantite_dispo' => 'required',
-            'unite' => 'required',
-            'categorie' => 'required'
-        ])) {
-            $nom = $request->input('nom');
-            $prix_unitaire = $request->input('prix_unitaire');
-            $categories = $request->input('categorie');
-            $espece_vegetale_id = $request->input('espece_vegetale');
-            $couleur_id = $request->input('couleur');
-            $quantite = $request->input('quantite_dispo');
-            $unite_id = $request->input('unite');
-            $article = new Article();
-            $article->nom = $nom;
-            $article->prix_unitaire = $prix_unitaire;
-            $article->especeVegetale()->associate(EspeceVegetale::find($espece_vegetale_id));
-            $article->couleur()->associate(Couleur::find($couleur_id));
-            $article->quantite_dispo = $quantite;
-            $article->unite()->associate(Unite::find($unite_id));
-            $article->save();
-            $article_id = $article->id;
-            $article = Article::find($article_id);
-            $article->categories()->sync($categories);
 
-            return redirect()->route('articles.show', $article->id);
-        } else {
-            return redirect()->back();
-        }
-    }
+     public function store(Request $request)
+     {
+         if ($request->validate([
+             'nom' => 'required|string|max:45|min:2',
+             'prix_unitaire' => 'required|min:1',
+             'espece_vegetale' => 'required',
+             'couleur' => 'required',
+             'quantite_dispo' => 'required',
+             'unite' => 'required',
+             'categories.*' => 'numeric|exists:lf_categories,id' // validation des catégories sélectionnées
+         ])) {
+             $nom = $request->input('nom');
+             $prix_unitaire = $request->input('prix_unitaire');
+             $categories = $request->input('categories');
+             $espece_vegetale_id = $request->input('espece_vegetale');
+             $couleur_id = $request->input('couleur');
+             $quantite = $request->input('quantite_dispo');
+             $unite_id = $request->input('unite');
+     
+             $article = new Article();
+             $article->nom = $nom;
+             $article->prix_unitaire = $prix_unitaire;
+             $article->especeVegetale()->associate(EspeceVegetale::find($espece_vegetale_id));
+             $article->couleur()->associate(Couleur::find($couleur_id));
+             $article->quantite_dispo = $quantite;
+             $article->unite()->associate(Unite::find($unite_id));
+             $article->save();
+     
+             $article->categories()->sync($categories);
+     
+             return redirect()->route('articles.show', $article->id);
+         } else {
+             return redirect()->back();
+         }
+     }
 
     /**
      * Display the specified resource.
@@ -82,7 +83,7 @@ class ArticleController extends Controller
         // $article->with('categories')->get();
         // $article->with('especeVegetale')->get(); // Nom de la fonction dans le modèle Article
 
-        $article = Article::with('categories', 'especeVegetale')->find($id);
+        $article = Article::find($id);
 
         return view('articles.show', compact('article'));
     }

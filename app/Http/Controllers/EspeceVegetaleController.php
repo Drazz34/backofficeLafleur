@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Article;
 use App\Models\EspeceVegetale;
 use Illuminate\Http\Request;
 
@@ -39,8 +40,8 @@ class EspeceVegetaleController extends Controller
     public function show(string $id)
     {
         $especeVegetale = EspeceVegetale::find($id);
-
-        return view('especesVegetales.show', compact('especeVegetale'));
+        $articles = $especeVegetale->articles;
+        return view('especesVegetales.show', compact('especeVegetale', 'articles'));
     }
 
     /**
