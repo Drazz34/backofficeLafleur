@@ -22,7 +22,8 @@ class CouleurController extends Controller
      */
     public function create()
     {
-        //
+        $couleurs = Couleur::all();
+        return view('couleurs.create', compact('couleurs'));
     }
 
     /**
@@ -30,7 +31,19 @@ class CouleurController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if ($request->validate([
+            'nom_couleur' => 'required|string|max:45|min:2'
+        ])) {
+            $nom_couleur = $request->input('nom_couleur');
+
+            $couleur = new Couleur();
+            $couleur->nom_couleur = $nom_couleur;
+            $couleur->save();
+
+            return redirect()->route('couleurs.show', $couleur->id);
+        } else {
+            return redirect()->back();
+        }
     }
 
     /**
@@ -39,8 +52,8 @@ class CouleurController extends Controller
     public function show(string $id)
     {
         $couleur = Couleur::find($id);
-
-        return view('couleurs.show', compact('couleur'));
+        $articles = $couleur->articles;
+        return view('couleurs.show', compact('couleur', 'articles'));
     }
 
     /**
@@ -48,7 +61,9 @@ class CouleurController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $couleur = Couleur::find($id);
+        
+        return view('couleurs.edit', compact('couleur'));
     }
 
     /**
@@ -56,7 +71,19 @@ class CouleurController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        if ($request->validate([
+            'nom_couleur' => 'required|string|max:45|min:2'
+        ])) {
+            $nom_couleur = $request->input('nom_couleur');
+
+            $couleur = Couleur::find($id);
+            $couleur->nom_couleur = $nom_couleur;
+            $couleur->save();
+
+            return redirect()->route('couleurs.show', $couleur->id);
+        } else {
+            return redirect()->back();
+        }
     }
 
     /**
@@ -64,6 +91,8 @@ class CouleurController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $couleur = Couleur::findOrFail($id);
+        $couleur->delete();
+        return redirect()->route('couleurs.index');
     }
 }
