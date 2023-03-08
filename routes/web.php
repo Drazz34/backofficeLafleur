@@ -4,6 +4,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\CategorieController;
+use App\Http\Controllers\CommandeController;
 use App\Http\Controllers\CouleurController;
 use App\Http\Controllers\EspeceVegetaleController;
 use App\Http\Controllers\UniteController;
@@ -47,3 +48,5 @@ Route::resource('couleurs', CouleurController::class);
 Route::resource('unites', UniteController::class);
 
 Route::resource('categories', CategorieController::class);
+
+Route::resource('commandes', CommandeController::class);

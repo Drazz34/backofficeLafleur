@@ -27,7 +27,6 @@
                             <input type="text" name="quantite_dispo" id="quantite_dispo" value="{{$article->quantite_dispo}}" class="cursor-not-allowed" readonly>
                             @if($article->quantite_dispo < 10) <div class="text-red-500 font-bold">Attention: quantité en stock inférieure à 10.
                             </div>
-
                             @endif
                             @error('quantite_dispo')
                             <div class="text-red-500">{{$message}}</div>
