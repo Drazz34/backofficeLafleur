@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Commande;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class CommandeController extends Controller
@@ -14,7 +15,13 @@ class CommandeController extends Controller
     {
         $commandes = Commande::orderBy('id')->get();
 
-        return view('commandes.index', ['commandes' => $commandes]);
+         // Récupérer toutes les commandes en cours et passées
+         $commandesLivrees = Commande::where('date_livraison_souhaitee', '<', Carbon::today())->orderBy('date_livraison_souhaitee', 'asc')->get();
+         // Récupérer toutes les commandes à venir
+         $commandesAVenir = Commande::where('date_livraison_souhaitee', '>=', Carbon::today())->orderBy('date_livraison_souhaitee', 'asc')->get();
+ 
+
+        return view('commandes.index', compact('commandes', 'commandesLivrees', 'commandesAVenir'));
     }
 
     /**
@@ -38,7 +45,10 @@ class CommandeController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $commande = Commande::find($id);
+        $articles = $commande->articles;
+       
+        return view('commandes.show', compact('commande', 'articles'));
     }
 
     /**
