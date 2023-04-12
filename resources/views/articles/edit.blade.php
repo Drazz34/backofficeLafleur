@@ -25,9 +25,11 @@
                         <div class="flex flex-col max-w-lg">
                             <label for="quantite_dispo" class="py-3 font-bold">Quantité en stock</label>
                             <input type="text" name="quantite_dispo" id="quantite_dispo" value="{{$article->quantite_dispo}}" class="cursor-not-allowed" readonly>
-                            @if($article->quantite_dispo < 10) <div class="text-red-500 font-bold">Attention: quantité en stock inférieure à 10.
+                            @if($article->quantite_dispo == 0) <div class="text-red-500 font-bold">Attention: en rupture de stock.
+                            @elseif($article->quantite_dispo < 10) <div class="text-red-500 font-bold">Attention: quantité en stock inférieure à 10.
                             </div>
                             @endif
+                            
                             @error('quantite_dispo')
                             <div class="text-red-500">{{$message}}</div>
                             @enderror
