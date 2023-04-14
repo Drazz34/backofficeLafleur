@@ -36,7 +36,8 @@
 
                                 <td>
                                     {{$article->nom}}
-                                    @if($article->quantite_dispo < 10) <div class="text-red-500 font-bold">Attention: quantité en stock inférieure à 10.
+                                    @if($article->quantite_dispo == 0) <div class="text-red-500 font-bold">Attention: en rupture de stock.
+                                    @elseif($article->quantite_dispo < 10) <div class="text-red-500 font-bold">Attention: quantité en stock inférieure à 10.
                                     </div>
                                     @endif
                                 </td>

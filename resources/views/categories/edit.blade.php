@@ -16,8 +16,33 @@
 
                         <div class="flex flex-col max-w-lg">
                             <label for="nom" class="py-3 font-bold">Nom</label>
-                            <input type="text" name="nom" id="nom" value="{{$categorie->nom}}">
+                            <input type="text" name="nom" id="nom_edit" value="{{$categorie->nom}}">
                             @error('nom')
+                            <div class="text-red-500">{{$message}}</div>
+                            @enderror
+                        </div>
+
+                        <div class="flex flex-col max-w-lg">
+                            <label for="description" class="py-3 font-bold">Description</label>
+                            <textarea name="description" id="description_edit" value="{{$categorie->description}}">{{$categorie->description}}</textarea>
+                            @error('description')
+                            <div class="text-red-500">{{$message}}</div>
+                            @enderror
+                        </div>
+
+                        <div class="flex flex-col max-w-lg">
+                            <label for="photo" class="py-3 font-bold">Photo</label>
+                            <p>Image actuelle : {{$categorie->photo}}</p>
+                            <input type="file" name="photo" id="photo_edit" value="{{$categorie->photo}}" accept="image/png, image/jpeg">
+                            @error('photo')
+                            <div class="text-red-500">{{$message}}</div>
+                            @enderror
+                        </div>
+
+                        <div class="flex flex-col max-w-lg">
+                            <label for="alt" class="py-3 font-bold">Alt</label>
+                            <input type="text" name="alt" id="alt_edit" value="{{$categorie->alt}}">
+                            @error('alt')
                             <div class="text-red-500">{{$message}}</div>
                             @enderror
                         </div>
@@ -36,3 +61,5 @@
     </div>
 
 </x-app-layout>
+
+<?php var_dump($categorie->description);

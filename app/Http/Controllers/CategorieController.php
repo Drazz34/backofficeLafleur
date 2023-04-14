@@ -32,12 +32,21 @@ class CategorieController extends Controller
     public function store(Request $request)
     {
         if ($request->validate([
-            'nom' => 'required|string|max:45|min:2'
+            'nom' => 'required|string|max:45|min:2',
+            'description' => 'required|string|min:2',
+            'photo' => 'required',
+            'alt' => 'required|string|min:2'
         ])) {
             $nom = $request->input('nom');
+            $description = $request->input('description');
+            $photo = $request->input('photo');
+            $alt = $request->input('alt');
 
             $categorie = new Categorie();
             $categorie->nom = $nom;
+            $categorie->description = $description;
+            $categorie->photo = $photo;
+            $categorie->alt = $alt;
             $categorie->save();
 
             return redirect()->route('categories.show', $categorie->id);
@@ -72,11 +81,23 @@ class CategorieController extends Controller
     public function update(Request $request, string $id)
     {
         if ($request->validate([
-            'nom' => 'required|string|max:45|min:2'
+            'nom' => 'required|string|max:45|min:2',
+            'description' => 'required|string|min:2',
+            'photo' => 'required',
+            'alt' => 'required|string|min:2'
         ])) {
             $nom = $request->input('nom');
+            $description = $request->input('description');
+            $photo = $request->input('photo');
+            $alt = $request->input('alt');
+
             $categorie = Categorie::find($id);
+
             $categorie->nom = $nom;
+            $categorie->description = $description;
+            $categorie->photo = $photo;
+            $categorie->alt = $alt;
+            
             $categorie->save();
             return redirect()->route('categories.show', $categorie->id);
         } else {
