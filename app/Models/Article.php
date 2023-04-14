@@ -11,7 +11,7 @@ class Article extends Model
 
     protected $table = "lf_articles";
     protected $primaryKey = "id";
-    protected $fillable = array('nom', 'prix_unitaire', 'quantite_dispo', 'date_inventaire', 'poids', 'taille');
+    protected $fillable = array('nom', 'prix_unitaire', 'quantite_dispo', 'date_inventaire', 'poids', 'taille', 'photo', 'alt');
     public $timestamps = false;
 
     public function couleur()

@@ -47,7 +47,11 @@ class ArticleController extends Controller
              'couleur' => 'required',
              'quantite_dispo' => 'required',
              'unite' => 'required',
-             'categories.*' => 'numeric|exists:lf_categories,id' // validation des catégories sélectionnées
+             'categories.*' => 'required|numeric|exists:lf_categories,id', // validation des catégories sélectionnées
+             'poids' => 'nullable|numeric',
+             'taille' => 'nullable|numeric',
+             'photo' => 'required',
+             'alt' => 'required|string|min:2'
          ])) {
              $nom = $request->input('nom');
              $prix_unitaire = $request->input('prix_unitaire');
@@ -56,6 +60,11 @@ class ArticleController extends Controller
              $couleur_id = $request->input('couleur');
              $quantite = $request->input('quantite_dispo');
              $unite_id = $request->input('unite');
+             $poids = $request->input('poids');
+             $taille = $request->input('taille');
+             $photo = $request->input('photo');
+             $alt = $request->input('alt');
+
      
              $article = new Article();
              $article->nom = $nom;
@@ -64,6 +73,11 @@ class ArticleController extends Controller
              $article->couleur()->associate(Couleur::find($couleur_id));
              $article->quantite_dispo = $quantite;
              $article->unite()->associate(Unite::find($unite_id));
+             $article->poids = $poids;
+             $article->taille = $taille;
+             $article->photo = $photo;
+             $article->alt = $alt;
+
              $article->save();
      
              $article->categories()->sync($categories);
