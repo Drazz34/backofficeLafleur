@@ -37,8 +37,12 @@
                                 <tr class="border text-center">
 
                                     <td>{{$commande->id}}</td>
-                                    <td><strong>{{$commande->article->nom}}</strong><br>à livrer le : {{$commande->date_livraison_souhaitee}}</td>
-
+                                    <td><strong>{{$commande->article->nom}}</strong>
+                                        @if($commande-> gainLoterie)
+                                        <br>Lot : {{$commande-> gainLoterie->lot}}
+                                        @endif
+                                        <br>à livrer le : {{$commande->date_livraison_souhaitee}}
+                                    </td>
                                     <td class="p-5">
 
                                         <!-- lien Voir -->
@@ -68,7 +72,7 @@
                         </table>
                         <br>
                     </div>
-                    
+
 
                     <div class="w-full lg:w-1/2">
 
@@ -95,7 +99,11 @@
                                 <tr class="border text-center">
 
                                     <td>{{$commande->id}}</td>
-                                    <td><strong>{{$commande->article->nom}}</strong><br> livrée le : {{$commande->date_livraison_souhaitee}}</td>
+                                    <td><strong>{{$commande->article->nom}}</strong>
+                                        @if($commande->gainLoterie)
+                                        <br>Lot : {{$commande->gainLoterie->lot}}
+                                        @endif<br> livrée le : {{$commande->date_livraison_souhaitee}}
+                                    </td>
 
                                     <td class="p-5">
 
