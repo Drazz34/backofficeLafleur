@@ -13,7 +13,11 @@
                     
                     <h3>
                         <div class="flex">
-                            <p class="m-2 text-xl max-w-none p-2 rounded-lg"><strong>Article</strong> :<br> {{$commande->article->nom}}</p>
+                            <p class="m-2 text-xl max-w-none p-2 rounded-lg"><strong>Article</strong> :<br> {{$commande->article->nom}}
+                            @if ($commande->gainLoterie)
+                            <br>Lot : {{$commande->gainLoterie->lot}}
+                            @endif
+                            </p>
                         </div>
                     </h3>
 
