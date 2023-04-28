@@ -58,7 +58,7 @@
                                         @endslot
                                         @endcomponent
 
-                                        <x-btn-supprimer :action="route('commandes.destroy', $commande->id)" />
+                                        <!-- <x-btn-supprimer :action="route('commandes.destroy', $commande->id)" /> -->
 
 
                                     </td>
@@ -120,7 +120,7 @@
                                         @endslot
                                         @endcomponent
 
-                                        <x-btn-supprimer :action="route('commandes.destroy', $commande->id)" />
+                                        <!-- <x-btn-supprimer :action="route('commandes.destroy', $commande->id)" /> -->
 
 
                                     </td>
