@@ -52,9 +52,9 @@
                     </h3>
 
                     
-                    <div class="flex justify-end">
+                    <!-- <div class="flex justify-end">
                         <x-btn-supprimer :action="route('commandes.destroy', $commande->id)" />
-                    </div>
+                    </div> -->
 
                 </div>
             </div>
